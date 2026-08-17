@@ -6,3 +6,13 @@ El flujo inicia cuando un cliente (Navegador o Postman) envía una petición HTT
 - **Roles de base de datos:** Se utiliza el rol `app_ia` con privilegios mínimos limitados exclusivamente a `SELECT` e `INSERT`. No tiene permisos para modificar ni borrar datos (DROP, DELETE).
 - **Manejo de secretos:** Todas las credenciales se administran mediante un archivo `.env` local que está ignorado en Git (`.gitignore`), previniendo fugas de contraseñas.
 
+## Informe de Pruebas y Latencia
+
+### Pruebas Unitarias
+Se implementó `pytest` para garantizar la funcionalidad de los endpoints. Las pruebas confirmaron conexión exitosa y clasificación correcta en el motor base.
+
+### Pruebas de Carga (k6)
+Se realizó una simulación con 10 usuarios virtuales concurrentes durante 30 segundos.
+- **Motor evaluado:** `eco`
+- **Tasa de éxito:** 100% de peticiones HTTP 200.
+- **Rendimiento:** Sistema estable bajo carga, respondiendo eficientemente gracias a la contenerización.
